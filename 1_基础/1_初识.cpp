@@ -218,7 +218,7 @@ int main() {
     cout << "please cin to bool type variable " << endl;
     cin >> flag; // 赋值, 我们应该赋予0, 1这样的值.,
     // bool类型, 只要是非零的值, 都表示为真.
-    cout << flag << endl
+    cout << flag << endl;
 
 
 

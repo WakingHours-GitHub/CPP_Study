@@ -155,7 +155,7 @@ void switch_construct(){
 
         // 这个表达式只能整数, 类似int 以及char. 字符型也可以. 不能是一个区间.
         优点结构清晰, 执行效率高.
-
+        如果不写break, 则程序会一直向下执行.
 
      */
 
@@ -179,8 +179,8 @@ void switch_construct(){
         case 6:
         case 5:
             cout << "一般" << endl;
-            break;
-        default:
+            break; // 如果不写break, 则程序会一直向下执行.
+        default: // 如果前面几个都不满足, 则最后进入default.
             cout << "烂片" << endl;
             break;
     }
