@@ -144,6 +144,80 @@ void for_instance_knock_desk(){
     }
 }
 
+void nest_loop() {
+    /*
+        嵌套循环: 在循环体中再嵌套一层循环, 解决一些实际问题.
+
+     */
+
+    // 打印一行:
+//    for (int i = 0; i < 10; i++){
+//        cout << "* "; // 不换行打印.
+//    }
+//    cout << endl; // 换行处理.
+
+    // 外层执行一次, 内层执行一周.
+    for (int i = 0; i < 10; i++){
+        // 内层循环
+        for (int j = 0; j < 10; j++){
+            cout << "* ";
+        }
+        cout << endl;
+    }
+}
+
+void  multiplication_table(){
+    // 实现99乘法表:
+
+    for (int i = 1; i < 10; i++){ // 行数
+        for (int j = 1; j <= i; j++) { // 列<=当前的行数
+            cout << j << "*" << i << " = " << i*j << " ";
+        }
+        cout << endl;
+    }
+}
+
+void break_and_continue_goto(){
+    /*
+        break语句: 用于跳出选择结构或者循环结构. 使用方法.
+        break使用的时机: 出现switch条件语句当中, 作用是终止case并跳出switch.
+        出现循环语句中是, 跳出当前的循环语句.
+        出现在嵌套循环中, 跳出最近的内层循环语句.
+
+
+        continue: 在循环语句中, 跳过本次循环中余下尚未执行的语句, 继续执行下一次循环.
+        循环语句: do_while, while, for.
+        continue就是直接执行下一次的循环. 而不执行本次循环后续的语句了.
+        continue不会终止循环.
+
+        goto语句: 可以无条件的跳转代码
+        语法: goto 标记; // goto标记
+                标记: // 这就表示标记.
+        如果标记的名称存在, 执行到goto语句时, 则会跳转到标记的位置.
+        不常用, goto容易影响代码逻辑和结构.
+
+     */
+
+    cout << "1, ****" << endl;
+    goto FLAG;
+    cout << "2, ****" << endl;
+    cout << "3, ****" << endl;
+    cout << "4, ****" << endl;
+
+    FLAG:
+    cout << "5, ****" << endl;
+    cout << "6, ****" << endl;
+
+
+
+
+
+
+
+
+
+
+}
 
 
 int main(){
@@ -155,7 +229,11 @@ int main(){
 
 //    for_study();
 
-    for_instance_knock_desk();
+//    for_instance_knock_desk();
+//    nest_loop();
+//    multiplication_table();
+
+    break_and_continue_goto();
 return 0;
 
 }
