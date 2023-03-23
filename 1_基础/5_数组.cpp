@@ -136,6 +136,27 @@ void reverse_array(){
 
 
 void  bubbling_sort() {
+    int arr[] = {1, 4, 5, 3, 2, 5, 6, 7, 8,10, 20};
+    int len = ARRAY_SIZE(arr);
+    for (int i = 0; i < len; i++) {
+        cout << arr[i] << endl;
+    }
+
+    for (int i = 0; i < len -1; i++) {
+        for (int j = 0, temp = 0; j < len - j -1; j++) { // 每次的最后len-i就是当前排序的最大了。
+            if (arr[j] > arr[j+1]) { // 如果前大于后则交换, 这是
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+
+        }
+    }
+    for(int i = 0; i < len; i++){
+        cout << arr[i] << endl;
+
+    }
+
 
 }
 
@@ -146,7 +167,8 @@ int main() {
 //    array_name();
 
 //    _1_d_instance();
-    reverse_array();
+//    reverse_array();
 //
+    bubbling_sort();
     return 0;
 }
