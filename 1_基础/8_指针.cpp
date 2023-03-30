@@ -181,6 +181,44 @@ void point_function(){
     cout << a << " " << b << endl; // 交换成功.
 }
 
+// 传入数组和数组的长度, 数组传入的时候是以地址传递的方式, 当作指针, 所以看不到数组的长度.
+int * bubble_sort(int * arr, int len){
+    for(int i = 0, temp=0; i < len -1; i++) {
+        for (int j = 0; j < len - 1 - i; j++){
+            if(arr[j] > arr[j+1]){
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] =temp;
+            }
+
+        }
+    }
+    return arr;
+
+}
+void print_array(int * arr, int len) {
+    for (int i = 0; i < len; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void point_array_function() {
+    // 封装一个函数, 利用冒泡排序, 实现对整形数组的升序排列.
+    int arr[10] = {4, 3 ,6, 9, 1, 2, 10, 8, 7, 5};
+    int len = sizeof arr / sizeof arr[0];
+
+    bubble_sort(arr, len); // 将数组以地址的形式传递到函数当中.
+    // 最好传递一个长度, 在外侧计算.
+
+    print_array(arr, len);
+
+
+
+
+
+}
+
 int main() {
 //    point_definite();
 
@@ -188,7 +226,9 @@ int main() {
 //    point_null_other();
 //    const_point();
 //    point_array();
-    point_function();
+//    point_function();
+
+    point_array_function();
 
     return 0;
 }

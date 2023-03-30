@@ -8,3 +8,6 @@ add_executable(5_main 5_数组.cpp)
 add_executable(6_main 6_二维数组.cpp)
 add_executable(7_main 7_函数.cpp swap.cpp swap.h)
 add_executable(8_main 8_指针.cpp)
+add_executable(9_main 9_结构体.cpp)
+add_executable(10_main 10_结构体案例.cpp)
+
