@@ -3,15 +3,18 @@
 //
 #include <iostream>
 #include <string>
+#include <random>
+#include <ctime>
+
 #define LEN(arr) (sizeof arr/ sizeof arr[0])
 
 using namespace std;
 
 
-// å­¦ç”Ÿçš„ç»“æ„ä½“:
+// Ñ§ÉúµÄ½á¹¹Ìå:
 struct Student{
-    string sName;   // å§“å.
-    int score;  // åˆ†æ•°
+    string sName;   // ĞÕÃû.
+    int score;  // ·ÖÊı
 };
 
 
@@ -21,19 +24,24 @@ struct Student{
 
 
 
-// è€å¸ˆçš„ç»“æ„ä½“:
+// ÀÏÊ¦µÄ½á¹¹Ìå:
 struct Teacher{
     string tName;
     struct Student sArray[5];
 };
 
 
+// 
 void init_teacher_student(Teacher *t_array, int t_len, int s_len){
+    string nameSeed = "ABCDE";
     for (int i = 0; i < t_len; i++){
-        t_array -> tName = "teach_" + to_string(i);
-        for (int j = 0; j < s_len; j++){
-            t_array ->sArray[i].sName = "student_" + to_string(j);
-            t_array -> sArray[i].score = 100+j;
+        t_array[i].tName = (string)"teach_" + nameSeed[i]; // ¿ÉÒÔÊ¹ÓÃÕâÖÖ·½Ê½½øĞĞ³õÊ¼»¯.
+//        t_array[i].tName += nameSeed[i];
+
+        for (int j = 0, random_int ; j < s_len; j++){
+            random_int = rand() % 61 + 40; // 40~100
+            (t_array+i) -> sArray[j].sName = (string)"student_" + to_string(j);
+            (t_array + i) -> sArray[j].score = random_int;
 
         }
 
@@ -42,9 +50,9 @@ void init_teacher_student(Teacher *t_array, int t_len, int s_len){
 
 void print_teacher_student(Teacher *t_array, int t_len, int s_len){
     for (int i = 0; i < t_len; i++) {
-        cout << t_array->tName << ": " << endl;
+        cout << t_array[i].tName << ": " << endl;
         for (int j = 0; j < s_len; j++) {
-            cout << "student name: " << t_array->sArray[i].sName <<  "student score: " << t_array->sArray[i].score << endl;
+            cout << "\tstudent name: " <<  (t_array+i) ->sArray[j].sName <<  "; student score: " <<  (t_array+i) -> sArray[j].score << endl;
         }
     }
 
@@ -52,15 +60,38 @@ void print_teacher_student(Teacher *t_array, int t_len, int s_len){
 
 
 void struct_instance_01() {
-    // åˆ›å»ºä¸‰ä¸ªè€å¸ˆçš„æ•°ç»„. é€šè¿‡å‡½æ•°è¿›è¡Œèµ‹å€¼, ä»¥åŠå­¦ç”Ÿä¿¡æ¯
+    // ´´½¨Èı¸öÀÏÊ¦µÄÊı×é. Í¨¹ıº¯Êı½øĞĞ¸³Öµ, ÒÔ¼°Ñ§ÉúĞÅÏ¢
     Teacher tArray[3]; //
     int t_len = LEN(tArray), s_len = LEN(tArray->sArray);
+
+    // Ëæ»úÊıÖÖ×Ó:
+    srand((unsigned int)time(NULL)); // ĞèÒª°üº¬ctimeÍ·ÎÄ¼ş.
+
     init_teacher_student(tArray, t_len, s_len);
     print_teacher_student(tArray, t_len, s_len);
 
 
 
 }
+
+
+
+// Éè¼ÆÒ»¸öÓ¢ĞÛµÄ½á¹¹Ìå, °üÀ¨³ÉÔ±ĞÕÃû¡¢ÄêÁä¡¢ĞÔ±ğ; ´´½¨½á¹¹ÌåÊı×é, ´æ·ÅÎåÃûÓ¢ĞÛ.
+// È»ºóÍ¨¹ıÒ»¸öÃ°ÅİÅÅĞò, °´ÕÕÄêÁä½øĞĞÉıĞòÅÅÁĞ. ×îÖÕ´òÓ¡.
+struct hero{
+    string name; // ĞÕÃû
+    int age; // ÄêÁä
+    string gender; // ĞÔ±ğ
+};
+
+
+
+void struct_instance_02() {
+
+
+}
+
+
 
 int main() {
     struct_instance_01();

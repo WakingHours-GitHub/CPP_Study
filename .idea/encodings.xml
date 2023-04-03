@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/1_基础/10_结构体案例.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/1_基础/1_初识.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/1_基础/3_程序流程结构.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/1_基础/4_循环结构.cpp" charset="GBK" />
@@ -8,5 +9,6 @@
     <file url="file://$PROJECT_DIR$/1_基础/6_二维数组.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/1_基础/8_指针.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/1_基础/9_结构体.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/2_通讯录管理系统/main.cpp" charset="GBK" />
   </component>
 </project>
