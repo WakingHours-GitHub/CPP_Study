@@ -181,6 +181,7 @@ int main() {
             case 5: // 修改联系人
                 break;
             case 6: // 清空联系人
+                cleanPerson(&directory);
                 break;
             case 0: // 退出通讯率管理系统.
                 cout << "欢迎下次使用" << endl;
