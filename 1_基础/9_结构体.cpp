@@ -86,11 +86,11 @@ void definite_struct () {
     s1.name = "张三";
     s1.age = 19;
     s1.score = 100;
-    cout << "name: " << s1.name << " age: " << s1.age << " score: " << s1.score << endl;
+    cout << "name: " << s1.name << " money: " << s1.age << " score: " << s1.score << endl;
 
     // 定义的时候直接指定成员, 按照顺序为成员进行赋值.
     struct Student s2 = {"lipu", 12, 98};
-    cout << "name: " << s2.name << " age: " << s2.age << " score: " << s2.score << endl;
+    cout << "name: " << s2.name << " money: " << s2.age << " score: " << s2.score << endl;
 
 
 
@@ -162,7 +162,7 @@ void print_Student_2(const struct Student *s_p) { // 等同于 struct Student const
     cout << "print student 2" << endl;
     // 此时修改则会改变原始的变量, 因为是地址传递.
 
-//    s_p -> age = 200; // 如果我们不希望s_p所指向的元素被修改, 那么我们希望使用const进行修饰.
+//    s_p -> money = 200; // 如果我们不希望s_p所指向的元素被修改, 那么我们希望使用const进行修饰.
     // const *p: 是
     cout << s_p -> name << " " << s_p -> age << " " << s_p->score << endl;
 

@@ -106,26 +106,28 @@ void test03() {
 }
 
 // 函数重载的注意事项:
-// 1. 引用作为重载的条件
+// 1. 引用作为重载的条件, const int& 和 int&是不同的, 编译器会帮你做很多事情.
 void func6(int &a){ // int &a = 10, 不合法.
     cout << "func6 int &a" << endl;
 }
+// 可以发生函数重载.
 void func6(const int &a){ // int temp=10; const int &a = temp;
     cout << "func6 const int &a" << endl;
 }
 void test04() {
     // 加const和不加const对于引用来说是有区分的. 可以作为函数重载.
-    int a = 10;
+    int a = 10; // 这是一个变量, 在栈区
     func6(a); // func6 int &a 变量, 可读可写. 所以调用int &a
 
     // 如果是常量:
-    const int b = 10;
+    const int b = 10; // 这是一个常量.
     func6(b); // func6 const int &a
 
     // 或者是这样:
     func6(10); // 直接传递一个常量10也是: func6 const int &a
-    // 还记得常量和引用之间的联系吗. int &a = 10, 这是错误的.
+    // 还记得常量和引用之间的联系吗. int &a = 10, 这是不合法的.
     // 但是const int &a = 10; 编译器会给我们做优化. 所以只能走这个.
+
 
 
 }
@@ -134,13 +136,13 @@ void test04() {
 void func7(int a, int b=10){
     cout << "func7(int a, int b)" << endl;
 }
-// 可以重载. 参数个数不同. 语法可以通过
+// 可以重载. 参数个数不同. 语法可以通过, 但是在使用的时候, 就会报错.
 void func7(int a){
     cout << "func7(int a)" << endl;
 }
 void test05(){
 //    func7(10); // 运行时出错. 因为上面那个有一个默认函数, 所以传递一个参数,可以走上面也可以走下面函数.
-    // 因此会报错. 我们尽量避免这方式出现.,
+    // 因此会报错. 我们尽量避免这方式出现. 所以在使用函数重载的时候, 最好不要使用默认参数.
     func7(10, 20); // 传递两个参数是没问题的. func7(int a, int b)
 
 }
