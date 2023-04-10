@@ -53,10 +53,89 @@ using namespace std;
 // 练习案例2: 点和圆的关系.
 // 使用r判断点和圆的关系.
 // 设计圆类和点类.
+// 两点: 1. 就是可以在类中写别的类.
+// 不同的类写在不同的文件中, 分文件编写.
+class Point{
+public:
+    int getX() const {
+        return X;
+    }
+
+    void setX(int x) {
+        X = x;
+    }
+
+    int getY() const {
+        return Y;
+    }
+
+    void setY(int y) {
+        Y = y;
+    }
+
+private:
+    int X;
+    int Y;
+
+};
+
+class Circle_2{
+public:
+    int getR() const {
+        return r;
+    }
+
+    void setR(int r) {
+        this->r = r;
+    }
+
+    const Point &getCenter() const {
+        return center;
+    }
+
+    void setCenter(const Point &center) {
+        Circle_2::center = center;
+        // 这个Circle_2表示作用域, 是Circle的作用域.
+    }
+
+private:
+    int r;
+    Point center; // 在类中可以让另一个类作为本类的成员.
 
 
 
 
+
+};
+#include <math.h>
+void isInCircle(Circle_2 &c, Point &p){
+    int distance_square = pow(c.getCenter().getX()-p.getX(), 2) + pow(c.getCenter().getY()-p.getY(), 2);
+    int r_square = (c.getR() * c.getR());
+    cout << r_square ;
+    if (distance_square == r_square){
+        cout << "Point on Circle. " << endl;
+    }else if (distance_square > r_square) {
+        cout << "Point out of circle. " << endl;
+
+    }else{
+        cout << "Point in circle" << endl;
+    }
+
+
+}
+void test_point_and_circle(){
+    Circle_2 c;
+    c.setR(10);
+
+    Point center;
+    center.setX(10); center.setY(0);
+
+    c.setCenter(center);
+
+    Point p;
+    p.setX(10); p.setY(11);
+    isInCircle(c, p);
+}
 
 // 练习案例1: 设计立方体类. Cube
 // 求出立方体的面积和体积.
@@ -344,8 +423,8 @@ int main() {
 //    test02();
 //    test03();
 //    test06();
-    test_cube();
-
+//    test_cube();
+    test_point_and_circle();
     return 0;
 }
 
