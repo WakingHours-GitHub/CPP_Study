@@ -14,3 +14,7 @@ add_executable(3_7_main 7_初始化列表.cpp)
 add_executable(3_8_main 8_类对象作为成员.cpp)
 add_executable(3_9_main 9_静态成员.cpp)
 add_executable(3_10_main 10_C++对象模型和this指针.cpp)
+
+add_executable(3_11_main 11_空指针访问成员函数.cpp)
+add_executable(3_12_main 12_const修饰成员函数.cpp)
+add_executable(3_13_main 13_友元.cpp)
