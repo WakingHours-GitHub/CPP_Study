@@ -8,52 +8,124 @@ using namespace  std;
 
 
 /*
-    åœ¨ç¨‹åºé‡Œ, æœ‰äº›ç§æœ‰å±æ€§, ä¹Ÿæƒ³è®©ç±»å¤–çš„ä¸€äº›å‡½æ•°æˆ–è€…ç±»è¿›è¡Œè®¿é—®, å°±éœ€è¦ç”¨åˆ°å‹å…ƒæŠ€æœ¯.
-    å‹å…ƒçš„ç›®çš„å°±æ˜¯è®©ä¸€ä¸ªå‡½æ•°æˆ–è€…ç±»è®¿é—®å¦å¤–ä¸€ä¸ªç±»ä¸­çš„ç§æœ‰æˆå‘˜.
-    å…³é”®å­—: friend
-    å‹å…ƒçš„ä¸‰ç§å®ç°:
-        å…¨å±€å‡½æ•°åšå‹å…ƒ
-        ç±»åšå‹å…ƒ
-        æˆå‘˜å‡½æ•°åšå‹å…ƒ.
+    ÔÚ³ÌĞòÀï, ÓĞĞ©Ë½ÓĞÊôĞÔ, Ò²ÏëÈÃÀàÍâµÄÒ»Ğ©º¯Êı»òÕßÀà½øĞĞ·ÃÎÊ, ¾ÍĞèÒªÓÃµ½ÓÑÔª¼¼Êõ.
+    ÓÑÔªµÄÄ¿µÄ¾ÍÊÇÈÃÒ»¸öº¯Êı»òÕßÀà·ÃÎÊÁíÍâÒ»¸öÀàÖĞµÄË½ÓĞ³ÉÔ±.
+    ¹Ø¼ü×Ö: friend
+    ÓÑÔªµÄÈıÖÖÊµÏÖ:
+        È«¾Öº¯Êı×öÓÑÔª
+        Àà×öÓÑÔª
+        ³ÉÔ±º¯Êı×öÓÑÔª.
 
 
 
 
  */
+class Building; // ÉùÃ÷Àà. Ê¹ÓÃ²»±¨´í.
 
+
+// ³ÉÔ±º¯Êı×öÓÑÔª:
+class GoodGay2{
+public:
+    GoodGay2();
+    void visit(); // ÒòÎªÔÚBuildingÉùÃ÷ÁËÓÑÔª, ËùÒÔvisit¿ÉÒÔ·ÃÎÊBuildingÖĞµÄË½ÓĞÊôĞÔ
+    void visit2(); // µ«ÊÇvisit2Ã»ÓĞÔÚBuildingÉùÃ÷ÓÑÔª, ËùÒÔ²»ÄÜ·ÃÎÊË½ÓĞÊôĞÔ.
+
+
+    Building *building;
+
+};
+
+
+void test03() {
+    GoodGay2 g2;
+    g2.visit();
+
+}
+
+// Àà×öÓÑÔª:
+
+class GoodGay{
+public:
+    void visit(); // Ê¹ÓÃ²Î¹Ûº¯Êı, ·ÃÎÊBuildingÖĞµÄÊôĞÔ.
+
+
+    GoodGay();
+
+
+    Building *building; // ÄÚ²¿Î¬»¤Ò»¸öÖ¸Õë.
+
+
+};
+
+void test02(){
+    GoodGay gg; // ÒşÊ½¹¹Ôì, Êµ¼ÊÉÏÊÇµ÷ÓÃÁËÎŞ²Î¹¹Ôìº¯Êı.
+    gg.visit();
+}
+
+
+// È«¾Öº¯Êı×öÓÑÔª:
 class Building{
-    // goodGayå…¨å±€å‡½æ•°æ˜¯Buildingå¥½æœ‹å‹, å¯ä»¥è®¿é—®Buildingä¸­ç§æœ‰æˆå‘˜.
-    friend void goodGay(Building *building);
+    // goodGayÈ«¾Öº¯ÊıÊÇBuildingºÃÅóÓÑ, ¿ÉÒÔ·ÃÎÊBuildingÖĞË½ÓĞ³ÉÔ±.
+    friend void goodGay(Building *building); // Ê¹ÓÃfriend½øĞĞÉùÃ÷.
+
+    // GoodGayÀàÊÇ±¾ÀàµÄºÃÅóÓÑ, ¿ÉÒÔ·ÃÎÊ±¾ÀàÖĞµÄË½ÓĞ³ÉÔ±.
+    friend class GoodGay;
+
+    // ³ÉÔ±º¯Êı×öÓÑÔª: ¾ÍÊÇ½«Ä³ÀàµÄ³ÉÔ±º¯ÊıÊ¹ÓÃfriend½øĞĞĞŞÊÎ, µ±È», ÎÒÃÇĞèÒªÉùÃ÷×÷ÓÃÓò.
+    // ¸æËß±àÒëÆ÷, GoodGay2ÏÂµÄvisit³ÉÔ±º¯Êı×÷Îª±¾ÀàµÄºÃÅóÓÑ, ¿ÉÒÔ·ÃÎÊË½ÓĞÊôĞÔ.
+    friend void GoodGay2::visit();
+
 
 public:
     string sittingRoom;
-    // æ„é€ å‡½æ•°.
-    Building(): sittingRoom("å®¢å…"), bedRoom("å§å®¤"){};
+    // ¹¹Ôìº¯Êı.
+//    Building(): sittingRoom("¿ÍÌü"), bedRoom("ÎÔÊÒ"){}; // ÀàÄÚÊµÏÖ¹¹Ôìº¯Êı
+    Building(); // ÉùÃ÷
 
     Building(string sittingRoom, string bedRoom): sittingRoom(sittingRoom), bedRoom(bedRoom){};
-
-
-
-
-
-
 
 private:
     string bedRoom;
 };
 
 
-// é€šè¿‡å…¨å±€å‡½æ•°, è¿›è¡Œå‹å…ƒ.
+// ÎÒÃÇÒ²¿ÉÒÔÔÚÀàÍâÊéĞ´ÀàÄÚµÄº¯Êı, ÀàÄÚÉùÃ÷, ÀàÍâÊµÏÖ, Ö»ÊÇ×÷ÓÃÓò²»Í¬. ËùÒÔÎÒÃÇ¿ÉÒÔÊ¹ÓÃ×÷ÓÃÓòÈ»ºóÊµÏÖº¯Êı.
+Building::Building():sittingRoom("¿ÍÌü"), bedRoom("ÎÔÊÒ") {};
+
+// ÀàÍâÊµÏÖGoodGayµÄ¹¹Ôìº¯Êı.
+GoodGay::GoodGay():building(new Building) {}
+void GoodGay::visit() {
+    cout << "GoodGay::visit()" << endl;
+    cout << this->building->sittingRoom << endl;
+
+    // Àà×÷ÎªÓÑÔª, ÎÒÃÇÒ²¿ÉÒÔÍ¨¹ıÕâ¸öÀàÖĞµÄ·½·¨È¥·ÃÎÊË½ÓĞÊôĞÔ.
+    cout << this->building->bedRoom << endl;
+}
+
+// ÊµÏÖGoodGay2µÄ¹¹Ôìº¯ÊıºÍvisitº¯Êı
+GoodGay2::GoodGay2(): building(new Building){};
+
+void GoodGay2::visit() {
+    cout << "GoodGay2::visit()" << endl;
+    cout << this->building->sittingRoom << endl;
+
+    // ·ÃÎÊË½ÓĞË¯ĞÑ
+    cout << this->building->bedRoom << endl;
+}
+
+// Í¨¹ıÈ«¾Öº¯Êı, ½øĞĞÓÑÔª.
 void goodGay(Building *building) {
     cout << building->sittingRoom << endl;
-    cout << building ->bedRoom << endl;// è¿™æ ·å°±å¯ä»¥goodGayè®¿é—®åˆ°ç±»é‡Œé¢çš„ç§æœ‰å˜é‡äº†.
+
+    // ½«Õâ¸öº¯Êı, Ê¹ÓÃfriendÉùÃ÷ÔÚBuildingÀàµÄÄÚ²¿. ¾Í¿ÉÒÔ·ÃÎÊµ½Ë½ÓĞµÄÄÚÈİÁË.
+    cout << building ->bedRoom << endl;// ÕâÑù¾Í¿ÉÒÔgoodGay·ÃÎÊµ½ÀàÀïÃæµÄË½ÓĞ±äÁ¿ÁË.
 
 }
 
 
 
 int main() {
-
-
+//    test02();
+    test03();
     return 0;
 }
