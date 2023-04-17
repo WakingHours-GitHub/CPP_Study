@@ -53,8 +53,9 @@ public:
     Person& PersonAddAge(const Person &p){
         this -> A += p.A;
         return *this; // 返回调用的对象. 返回的是一个对象, 那么我们可以继续调用, 这就是链式编程实现的原理.
-//        Person const *p = &(*this) 返回原理.
-        // 如果是Person, 那么就是直接返回的是一个对象.
+//        Person * const p = &(*this) 返回原理. *this就是这个对象, 然后再加上引用就是指针
+        // 函数调用处, Person p = *(p)直接解引用. 拿到的就是所指向的对象. 这样一来就可以实现链式编程的思想了.
+        // 如果是Person, 那么就是直接返回的是一个对象. 那么就会调用拷贝构造函数创建一个新的对象.
     }
 
 
