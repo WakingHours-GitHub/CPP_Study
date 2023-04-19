@@ -7,6 +7,10 @@
 
 
 
+    区分前置递增和后置递增. 然后根据不同的写法实现不同的重载函数.
+
+
+
 
  */
 
@@ -15,7 +19,7 @@
 using namespace std;
 
 class MyNum{
-    friend ostream& operator<<(ostream& cout, MyNum& myNum);
+    friend ostream& operator<<(ostream& cout, MyNum myNum);
 public:
     MyNum(): num(0){};
     MyNum(int num): num(num){};
@@ -34,7 +38,8 @@ public:
         MyNum temp(*this); // MyNum temp = Person(*this); 调用拷贝构造函数(将所有的属性赋值过去)
 
         this->num++; // 自己递增
-        return temp; // 这里就是返回一个对象了
+        return temp; // 这里就是返回一个对象了, 因为temp是一个局部的变量,如果返回这个的引用, 那么就是非法操作了
+        // 因此这里需要调用拷贝构造函数创建一个新的变量.
     }
 
 
@@ -49,8 +54,9 @@ private:
 };
 
 // 重载MyNum的<<操作符.
-ostream& operator<<(ostream& cout, MyNum& myNum){
+ostream& operator<<(ostream& cout, MyNum myNum){ // 注意这里, 这有引用, 谁没有引用.
     cout << myNum.num;
+
 
     return cout;
 }
@@ -58,8 +64,16 @@ ostream& operator<<(ostream& cout, MyNum& myNum){
 
 void test(){
     MyNum myNum(0);
-    cout << ++(++myNum) << endl;
-    cout << myNum << endl;
+    cout << ++(++myNum) << endl; // 2
+    cout << myNum << endl; // 2
+
+    cout << myNum++ << endl; // 2
+    cout << myNum << endl; // 3
+
+
+    // 综上, 验证成功是对的.
+
+
 
 }
 
