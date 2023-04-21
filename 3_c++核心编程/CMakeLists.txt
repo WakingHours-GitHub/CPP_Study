@@ -12,6 +12,9 @@ add_executable(3_4_main 4_类和对象.cpp)
 add_executable(3_5_main 5_对象初始化和清理.cpp)
 add_executable(3_6_main 6_深浅拷贝.cpp)
 
+
+
+
 add_executable(3_7_main 7_初始化列表.cpp)
 add_executable(3_8_main 8_类对象作为成员.cpp)
 add_executable(3_9_main 9_静态成员.cpp)
