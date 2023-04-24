@@ -7,5 +7,7 @@ add_executable(3_20_3main 3_继承中的对象模型.cpp)
 add_executable(3_20_4main 4_继承中的构造和析构.cpp)
 add_executable(3_20_5main 5_继承同名成员处理方式.cpp)
 
+add_executable(3_20_6main 6_多继承.cpp)
+add_executable(3_20_7main 7_菱形继承.cpp)
 
 
