@@ -17,7 +17,8 @@ using namespace std;
     这个指针会指向一个vbtable, 这是一份指针偏移表. 每一个类都有一个这样的表, 里面存储变量的偏移量.
     通过这个指针偏移表, 每个类都能够访问到唯一的那个变量. 只有一份.
 
-
+    菱形继承带来的主要问题是子类继承了两份相同的数据, 导致资源浪费以及毫无意义.
+    使用虚继承可以解决菱形继承问题.
 
  */
 
@@ -43,6 +44,7 @@ void test01() {
     SheepTuo st; // tamen
     st.Sheep::Age = 10;
     st.Tuo::Age = 20;
+    // 继承的时候先调用父类的构造函数, 然后进行值赋值, 给子类.
 
     cout << "st.Sheep::Age=" << st.Sheep::Age << endl; // 10
     cout << "st.Tuo::Age=" << st.Tuo::Age << endl; // 20
