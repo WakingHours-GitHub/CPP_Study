@@ -16,7 +16,6 @@ public:
 // 显卡: GPU
 class VideoCard{
 public:
-
     virtual void display() = 0;
 };
 // 内存
@@ -29,8 +28,8 @@ public:
 class Computer{
 public:
     // 构造函数传入三个零件指针.
-    Computer(CPU *cpu, VideoCard *videoCard, Memory *memory){
-        this->cpu = cpu;
+    Computer(CPU *cpu, VideoCard *videoCard, Memory *memory){ // 多态的概念, 父类的指针.  传进来的是子类的对象
+        this->cpu = cpu; // 调用不同的子类的对象的函数.
         this->videoCard = videoCard;
         this->memory = memory;
     }
@@ -91,14 +90,10 @@ void test01(){
     VideoCard *gpu = new NvidiaGPU();
     Memory *memory = new LenovoMemory();
 
-
-
     Computer *computer = new Computer(cpu, gpu, memory);
     computer->work();
 
-    delete computer;
-
-
+    delete computer; // 执行析构函数.
 }
 
 
