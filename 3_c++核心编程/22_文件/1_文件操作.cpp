@@ -99,9 +99,50 @@ void test02(){
 
 }
 
+class Person{
+
+public:
+
+
+    char name[64] = {0, };
+    int age;
+};
+
+// 二进制文件
+void test03() {
+    ofstream ofs("person.txt", ios::out | ios::binary); // 使用构造函数, 直接打开.
+
+//    ofs.open("person.txt", ios::out | ios::binary); // 使用out和binary的方式。
+    Person p = {"离谱", 23}; // ???初始化
+    ofs.write((const char*)&p, sizeof (Person));
+
+    ofs.close();
+
+}
+
+// 二进制方式读文件:
+// istream& read(char *buffer, int len);
+void test04(){
+    ifstream ifs("person.txt", ios::in | ios::binary); // 创建对象, 打开文件
+    if (!ifs.is_open()){
+        cout << "文件打开失败" << endl;
+        return;
+    }
+
+    Person p;
+    ifs.read((char *)&p, sizeof(Person));
+
+    cout << "姓名: " << p.name << p.age << endl;
+
+    ifs.close();
+
+}
+
 int main() {
 //    test01();
-    test02();
+//    test02();
+//    test03();
 
+    test04();
     return 0;
 }
